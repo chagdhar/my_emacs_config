@@ -1,0 +1,77 @@
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+
+;; UI defaults
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+(hl-line-mode 1)
+
+(global-linum-mode 1)
+
+
+(electric-pair-mode 1)
+(show-paren-mode 1)
+
+
+(require 'package)
+(setq package-enable-at-startup nil)
+
+
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+			 ("gnu"       . "http://elpa.gnu.org/packages/")
+			 ("melpa"     . "https://melpa.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")))
+(package-initialize)
+
+
+
+(unless (package-installed-p 'use-package) ; unless it is already installed
+  (package-refresh-contents) ; updage packages archive
+  (package-install 'use-package)) ; and install the most recent version of use-package
+(eval-when-compile
+  (require 'use-package))
+
+(setq use-package-always-ensure t)
+
+
+
+(defun cleanup-and-save-buffer()
+  "Save the buffer and cleanup whitespace."
+  (interactive)
+  (progn
+    (whitespace-cleanup)
+    (save-buffer)))
+
+;; map s-s to cleanup-and-save-buffer instead of save-buffer
+(global-set-key (kbd "C-S-s") 'cleanup-and-save-buffer)
+
+
+(use-package monokai-theme
+	     :ensure t)
+
+
+
+
+
+
+
+;; init file ends here
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (monokai-theme use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
