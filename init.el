@@ -58,16 +58,41 @@
 
 (use-package monokai-theme)
 
+(use-package emojify
+  :init
+  (add-hook 'after-init-hook #'global-emojify-mode))
+
+
+(use-package general
+  :init
+  (general-evil-setup t)
+
+  (progn
+    (setq general-default-keymaps
+	  '(evil-normal-state-map
+	    evil-visual-state-map))))
+
+(general-define-key
+ "'" '(multi-term :which-key "shell")
+ "SPC" '(counsel-M-x :which-key "M-x")
+ "TAB" '(ivy-switch-buffer :which-key "prev buffer"))
+
+
+
+
+(use-package ivy-hydra)
+
 
 (use-package evil
   :init
   (evil-mode 1)
   :config
   (progn
-    ())
+    (define-key evil-motion-state-map "/" 'swiper)))
 
 
 
+  
 
 ;; init file ends here
 
@@ -76,7 +101,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (monokai-theme use-package))))
+ '(package-selected-packages (quote (counsel multi-term ivy monokai-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
