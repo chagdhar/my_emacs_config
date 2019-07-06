@@ -1,5 +1,13 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/dch/.emacs.d/init.el" . 1554)
+(("/home/dch/.emacs.d/init.el" . 2429)
+ ("/home/dch/main.cpp" . 7)
+ ("/home/dch/.emacs.d/elpa/molokai-theme-20151016.1545/molokai-theme-autoloads.el" . 556)
+ ("/home/dch/.emacs.d/elpa/magit-20190630.1329/magit-autoloads.el" . 82839)
+ ("/home/dch/.emacs.d/elpa/git-commit-20190625.323/git-commit-autoloads.el" . 1430)
+ ("/home/dch/.emacs.d/elpa/transient-20190630.1359/transient-autoloads.el" . 537)
+ ("/home/dch/.emacs.d/elpa/with-editor-20190511.1157/with-editor-autoloads.el" . 3403)
+ ("/home/dch/.emacs.d/elpa/async-20190503.656/async-autoloads.el" . 5296)
+ ("/home/dch/.emacs.d/elpa/rainbow-mode-1.0.1/rainbow-mode-autoloads.el" . 612)
  ("/home/dch/.emacs.d/"
   (dired-filename . "/home/dch/.emacs.d/init.el"))
  ("/home/dch/.emacs.d/elpa/ivy-20190704.1031/ivy-autoloads.el" . 5112)

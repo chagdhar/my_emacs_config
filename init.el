@@ -10,6 +10,8 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+
+
 (blink-cursor-mode -1)
 
 (hl-line-mode 1)
@@ -56,7 +58,8 @@
 (global-set-key (kbd "C-S-s") 'cleanup-and-save-buffer)
 
 
-(use-package monokai-theme)
+;;(use-package monokai-theme)
+(use-package molokai-theme)
 
 (use-package emojify
   :init
@@ -91,8 +94,37 @@
     (define-key evil-motion-state-map "/" 'swiper)))
 
 
+;; (use-package company
+;;   :diminish '(company-mode . " ")
+;;   :defer t
+;;   :init
+;;   (progn
+;;     (add-hook 'after-init-hook #'global-company-mode)
+;;     (setq company-idle-delay 0
+;; 	  company-echo-delay 0
+;; 	  company-minimum-prefix-length 3
+;; 	  company-require-match nil
+;; 	  company-dabbrev-ignore-case nil
+;; 	  company-dabbrev-downcase nil)))
 
-  
+
+
+(use-package company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3)
+  (setq company-selection-wrap-around t)
+  (company-tng-configure-default))
+
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  )
+
+
+
 
 ;; init file ends here
 
@@ -101,7 +133,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (counsel multi-term ivy monokai-theme use-package))))
+ '(package-selected-packages
+   (quote
+    (molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
