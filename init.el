@@ -94,27 +94,13 @@
     (define-key evil-motion-state-map "/" 'swiper)))
 
 
-;; (use-package company
-;;   :diminish '(company-mode . " ")
-;;   :defer t
-;;   :init
-;;   (progn
-;;     (add-hook 'after-init-hook #'global-company-mode)
-;;     (setq company-idle-delay 0
-;; 	  company-echo-delay 0
-;; 	  company-minimum-prefix-length 3
-;; 	  company-require-match nil
-;; 	  company-dabbrev-ignore-case nil
-;; 	  company-dabbrev-downcase nil)))
-
-
 
 (use-package company
   :init
   (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 3)
+  (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
   (company-tng-configure-default))
 
@@ -122,6 +108,26 @@
   (define-key company-active-map (kbd "M-n") nil)
   (define-key company-active-map (kbd "M-p") nil)
   )
+
+
+
+;;; setting up elpy mode for python programming
+(use-package elpy
+  :init
+  (add-hook 'python-mode-hook 'elpy-enable)
+  :config
+  (setq python-shell-interpreter "ipython"
+	python-shell-interpreter-args "-i --simple-prompt"))
+
+(use-package flycheck
+  :config
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+
+(use-package py-autopep8
+  :init
+  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
 
 
 
@@ -135,7 +141,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
+    (ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
