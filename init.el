@@ -139,9 +139,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (ahungry)))
+ '(custom-safe-themes
+   (quote
+    ("20bf9f519f78b247da9ccf974c31d3537bee613ff11579f539b2781246dee73b" default)))
  '(package-selected-packages
    (quote
-    (ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
+    (all-the-icons-ivy all-the-icons-dired all-the-icons ahungry-theme ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

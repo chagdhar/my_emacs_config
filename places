@@ -1,5 +1,10 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/dch/.emacs.d/init.el" . 3284)
+(("/home/dch/.emacs.d/init.el" . 1928)
+ ("/home/dch/.emacs.d/elpa/all-the-icons-ivy-20190508.1803/all-the-icons-ivy-autoloads.el" . 622)
+ ("/home/dch/.emacs.d/elpa/all-the-icons-dired-20170418.2131/all-the-icons-dired-autoloads.el" . 636)
+ ("/home/dch/.emacs.d/elpa/all-the-icons-20190320.1809/all-the-icons-autoloads.el" . 2223)
+ ("/home/dch/.emacs.d/elpa/memoize-20180614.1930/memoize-autoloads.el" . 416)
+ ("/home/dch/.emacs.d/elpa/ahungry-theme-20180131.328/ahungry-theme-autoloads.el" . 595)
  ("/home/dch/.emacs.d/elpa/ein-20190702.1230/ein-autoloads.el" . 23537)
  ("/home/dch/.emacs.d/elpa/websocket-20190621.54/websocket-autoloads.el" . 416)
  ("/home/dch/.emacs.d/elpa/request-20190621.1622/request-autoloads.el" . 404)
