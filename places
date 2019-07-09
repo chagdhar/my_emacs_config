@@ -1,5 +1,12 @@
 ;;; -*- coding: utf-8 -*-
-(("/home/dch/.emacs.d/init.el" . 1928)
+(("/home/dch/main.c" . 603)
+ ("/home/dch/.emacs.d/init.el" . 2731)
+ ("/home/dch/.emacs.d/elpa/company-quickhelp-20180525.1003/company-quickhelp-autoloads.el" . 1513)
+ ("/home/dch/.emacs.d/elpa/pos-tip-20150318.1513/pos-tip-autoloads.el" . 404)
+ ("/home/dch/.emacs.d/elpa/paredit-20171127.205/paredit-autoloads.el" . 955)
+ ("/home/dch/.emacs.d/elpa/company-tern-20161004.1847/company-tern-autoloads.el" . 616)
+ ("/home/dch/.emacs.d/elpa/tern-20181108.722/tern-autoloads.el" . 564)
+ ("/home/dch/.emacs.d/elpa/dash-functional-20180107.1618/dash-functional-autoloads.el" . 506)
  ("/home/dch/.emacs.d/elpa/all-the-icons-ivy-20190508.1803/all-the-icons-ivy-autoloads.el" . 622)
  ("/home/dch/.emacs.d/elpa/all-the-icons-dired-20170418.2131/all-the-icons-dired-autoloads.el" . 636)
  ("/home/dch/.emacs.d/elpa/all-the-icons-20190320.1809/all-the-icons-autoloads.el" . 2223)

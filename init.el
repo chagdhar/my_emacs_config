@@ -11,7 +11,6 @@
 (menu-bar-mode -1)
 
 
-
 (blink-cursor-mode -1)
 
 (hl-line-mode 1)
@@ -23,6 +22,18 @@
 
 (electric-pair-mode 1)
 (show-paren-mode 1)
+
+
+;; all confirmations will now be only y-or-n instead of yes-or-no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+
+(setq column-number-mode 1)
+
+(global-auto-revert-mode 1)
+(size-indication-mode 1)
+
+(set-language-environment "UTF-8")
 
 
 (require 'package)
@@ -58,8 +69,19 @@
 (global-set-key (kbd "C-S-s") 'cleanup-and-save-buffer)
 
 
-;;(use-package monokai-theme)
-(use-package molokai-theme)
+
+;;; put all themes here
+
+;;; uncomment the next line for monokai theme
+;;(use-package molokai-theme)
+
+
+;;; text editing plugins
+
+(use-package iedit)
+
+
+
 
 (use-package emojify
   :init
@@ -100,9 +122,15 @@
   (add-hook 'after-init-hook 'global-company-mode)
   :config
   (setq company-idle-delay 0)
+  (setq company-echo-delay 0)
   (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
-  (company-tng-configure-default))
+  (company-tng-configure-default)
+
+  (add-to-list 'company-backends 'company-jedi)
+  (add-to-list 'company-backends 'company-tern)
+  (company-quickhelp-mode 1)
+  (setq company-quickhelp-delay 0))
 
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "M-n") nil)
@@ -111,14 +139,19 @@
 
 
 
+(use-package yasnippet
+  :init
+  (yas-global-mode))
+
+
 ;;; setting up elpy mode for python programming
 (use-package elpy
   :init
   (add-hook 'python-mode-hook 'elpy-enable)
   :config
-  (setq python-shell-interpreter "ipython"
-	python-shell-interpreter-args "-i --simple-prompt"))
-
+  (;;setq python-shell-interpreter "ipython"
+   ;;python-shell-interpreter-args "-i --simple-prompt"
+   setq elpy-rpc-backend "jedi"))
 (use-package flycheck
   :config
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -128,6 +161,7 @@
 (use-package py-autopep8
   :init
   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
 
 
 
@@ -142,10 +176,12 @@
  '(custom-enabled-themes (quote (ahungry)))
  '(custom-safe-themes
    (quote
-    ("20bf9f519f78b247da9ccf974c31d3537bee613ff11579f539b2781246dee73b" default)))
+    ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "20bf9f519f78b247da9ccf974c31d3537bee613ff11579f539b2781246dee73b" default)))
  '(package-selected-packages
    (quote
-    (all-the-icons-ivy all-the-icons-dired all-the-icons ahungry-theme ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package))))
+    (company-quickhelp paredit company-tern all-the-icons-ivy all-the-icons-dired all-the-icons ahungry-theme ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package)))
+ '(python-shell-interpreter " /home/dch/miniconda3/bin/python3")
+ '(red "#ffffff"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
