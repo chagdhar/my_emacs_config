@@ -23,6 +23,7 @@
 (electric-pair-mode 1)
 (show-paren-mode 1)
 
+(setq use-dialog-box nil)
 
 ;; all confirmations will now be only y-or-n instead of yes-or-no
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -35,6 +36,7 @@
 
 (set-language-environment "UTF-8")
 
+(use-package neotree)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -105,9 +107,6 @@
 
 
 
-(use-package ivy-hydra)
-
-
 (use-package evil
   :init
   (evil-mode 1)
@@ -123,14 +122,22 @@
   :config
   (setq company-idle-delay 0)
   (setq company-echo-delay 0)
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
   (company-tng-configure-default)
 
   (add-to-list 'company-backends 'company-jedi)
-  (add-to-list 'company-backends 'company-tern)
-  (company-quickhelp-mode 1)
-  (setq company-quickhelp-delay 0))
+  (add-to-list 'company-backends 'company-tern))
+
+
+
+(use-package company-quickhelp
+  :config
+  (company-quickhelp-mode)
+  )
+
+
+
 
 (with-eval-after-load 'company
   (define-key company-active-map (kbd "M-n") nil)
@@ -144,26 +151,59 @@
   (yas-global-mode))
 
 
+
+;;; uncomment the next lines for turning elpy mode on
+
 ;;; setting up elpy mode for python programming
-(use-package elpy
-  :init
-  (add-hook 'python-mode-hook 'elpy-enable)
+;; (use-package elpy
+;;   :init
+;;   (add-hook 'python-mode-hook 'elpy-enable)
+;;   :config
+;;   (;;setq python-shell-interpreter "ipython"
+;;    ;;python-shell-interpreter-args "-i --simple-prompt"
+;;    setq elpy-rpc-backend "jedi"))
+;; (use-package flycheck
+;;   :config
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+
+;; (use-package py-autopep8
+;;   :init
+;;   (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+
+;;; elpy mode ends here
+
+
+;;; anaconda mode -- alternative for elpy mode -- more responsive and less sluggish
+
+;; old anaconda config -- works
+;; (use-package anaconda-mode
+;;   :init
+;;   (add-hook 'python-mode-hook 'anaconda-mode)
+;;   ;;(add-hook 'python-mode-hook 'anaconda-eldoc-mode-hook) ; doesn't work for some reason
+;;   :config
+;;   (progn
+;;     (require 'rx)
+;;     (eval-after-load "company"
+;;       '(add-to-list 'company-backends 'company-anaconda))))
+
+;; new anaconda config
+
+
+(use-package anaconda-mode
   :config
-  (;;setq python-shell-interpreter "ipython"
-   ;;python-shell-interpreter-args "-i --simple-prompt"
-   setq elpy-rpc-backend "jedi"))
-(use-package flycheck
-  :config
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  )
 
-
-(use-package py-autopep8
+(use-package company-anaconda
   :init
-  (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save))
+  (require 'rx)
+  :after (company)
+  :config
+  (add-to-list 'company-backends 'company-anaconda))
 
-
-
+;;; setup emacs for c/c++ programming -- try for ide like capabilities 
 
 
 ;; init file ends here
@@ -173,14 +213,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (ahungry)))
+ '(custom-enabled-themes (quote (molokai)))
  '(custom-safe-themes
    (quote
-    ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "20bf9f519f78b247da9ccf974c31d3537bee613ff11579f539b2781246dee73b" default)))
+    ("11e57648ab04915568e558b77541d0e94e69d09c9c54c06075938b6abc0189d8" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" "20bf9f519f78b247da9ccf974c31d3537bee613ff11579f539b2781246dee73b" default)))
  '(package-selected-packages
    (quote
-    (company-quickhelp paredit company-tern all-the-icons-ivy all-the-icons-dired all-the-icons ahungry-theme ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package)))
- '(python-shell-interpreter " /home/dch/miniconda3/bin/python3")
+    (neotree w3 w3m company-anaconda company-quickhelp paredit company-tern all-the-icons-ivy all-the-icons-dired all-the-icons ahungry-theme ein py-autopep8 flycheck elpy jedi molokai-theme magit rainbow-mode counsel multi-term ivy monokai-theme use-package)))
  '(red "#ffffff"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
